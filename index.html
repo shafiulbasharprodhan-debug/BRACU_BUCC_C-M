@@ -1,0 +1,560 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="auto">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Welcome to BUCC Communication & Marketing</title>
+
+<!-- Google Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Young+Serif&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+
+<!-- Tailwind CSS CDN -->
+<script src="https://cdn.tailwindcss.com"></script>
+
+<script>
+  tailwind.config = {
+    darkMode: 'class',
+    theme: {
+      extend: {
+        fontFamily: {
+          serif: ['"Young Serif"', 'Georgia', 'serif'],
+          sans: ['Nunito', 'system-ui', 'sans-serif'],
+        },
+        colors: {
+          brand: {
+            50: '#fdf8ef',
+            100: '#fbeed8',
+            400: '#f0b84a',
+            500: '#e5a52d',
+            600: '#ca851d',
+            900: '#3a2848',
+          },
+          darkbg: '#181120',
+          darkcard: '#241a2e',
+        }
+      }
+    }
+  }
+</script>
+
+<style>
+  :root {
+    --bg: #0d0714;
+    --surface: rgba(23, 15, 38, 0.75);
+    --border: rgba(139, 92, 246, 0.2);
+    --ink: #f8fafc;
+    --soft: #a78bfa;
+    --lamp: #f59e0b;
+    --lamp-ink: #0f172a;
+    --glow-primary: rgba(139, 92, 246, 0.25);
+    --glow-secondary: rgba(236, 72, 153, 0.18);
+    --glow-accent: rgba(6, 182, 212, 0.2);
+    --sage: #10b981;
+  }
+
+  /* Deep Mesh Dark Gradient Background */
+  body {
+    background-color: var(--bg);
+    background-image: 
+      radial-gradient(at 10% 10%, rgba(124, 58, 237, 0.22) 0px, transparent 50%),
+      radial-gradient(at 90% 15%, rgba(219, 39, 119, 0.18) 0px, transparent 50%),
+      radial-gradient(at 50% 85%, rgba(6, 182, 212, 0.15) 0px, transparent 50%),
+      radial-gradient(at 80% 80%, rgba(245, 158, 11, 0.12) 0px, transparent 50%),
+      linear-gradient(180deg, #090511 0%, #110a1f 50%, #08030f 100%);
+    background-attachment: fixed;
+    color: var(--ink);
+    font-family: 'Nunito', system-ui, sans-serif;
+  }
+
+  /* Glassmorphism styling with subtle glowing borders */
+  .glass-card {
+    background: var(--surface);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid var(--border);
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+  }
+
+  .glass-card-hover {
+    transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  .glass-card-hover:hover {
+    border-color: rgba(245, 158, 11, 0.4);
+    box-shadow: 0 12px 40px -10px rgba(245, 158, 11, 0.25);
+    transform: translateY(-2px);
+  }
+
+  .title-serif {
+    font-family: 'Young Serif', Georgia, serif;
+  }
+
+  /* Neon Glow Text Accent */
+  .text-glow {
+    text-shadow: 0 0 20px rgba(245, 158, 11, 0.35);
+  }
+
+  /* Custom Focus ring */
+  *:focus-visible {
+    outline: 2px solid #f59e0b;
+    outline-offset: 3px;
+  }
+</style>
+</head>
+<body class="min-h-screen flex flex-col justify-between selection:bg-amber-500 selection:text-slate-950">
+
+  <!-- Header Navigation Controls -->
+  <header class="w-full max-w-2xl mx-auto px-6 pt-6 flex justify-between items-center z-10">
+    <div class="flex items-center gap-2">
+      <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-black bg-gradient-to-r from-amber-500/20 via-purple-500/20 to-cyan-500/20 text-amber-300 border border-amber-500/30 shadow-lg shadow-amber-500/10 tracking-wide">
+        BUCC C&M
+      </span>
+    </div>
+    <div class="flex items-center gap-2">
+      <button id="themeToggleBtn" type="button" aria-label="Toggle theme" class="p-2.5 rounded-xl glass-card hover:border-amber-500/50 hover:text-amber-300 transition-all text-sm font-semibold flex items-center gap-1.5 shadow-md">
+        <span id="themeIcon">☀️</span>
+      </button>
+      <button id="openConfigBtn" type="button" class="p-2.5 rounded-xl glass-card hover:border-amber-500/50 hover:text-amber-300 transition-all text-sm font-semibold flex items-center gap-1.5 shadow-md">
+        ⚙️ <span class="hidden sm:inline">Settings</span>
+      </button>
+    </div>
+  </header>
+
+  <!-- Main Container -->
+  <main class="w-full max-w-2xl mx-auto px-6 py-8 flex-1">
+
+    <!-- Top Tag / Department Name -->
+    <div class="mb-6">
+      <p class="text-xs sm:text-sm font-bold uppercase tracking-widest text-amber-400/90" id="club"></p>
+    </div>
+
+    <!-- Main Dynamic Greeting -->
+    <h1 class="title-serif text-3xl sm:text-5xl font-normal leading-tight mb-4 tracking-tight text-white text-glow" id="greeting">
+      Welcome in.
+    </h1>
+
+    <p class="text-base sm:text-lg text-purple-200/80 mb-8 leading-relaxed max-w-xl" id="lead"></p>
+
+    <!-- Primary Action Hero Card -->
+    <a id="primary" href="#" target="_blank" rel="noopener" class="group relative block glass-card glass-card-hover rounded-2xl p-6 sm:p-7 mb-8 border-l-4 border-l-amber-400">
+      <div class="flex justify-between items-start gap-3 mb-2">
+        <b id="pTitle" class="title-serif text-xl sm:text-2xl font-normal text-white group-hover:text-amber-300 transition-colors"></b>
+        <span id="pBadge" class="text-xs px-2.5 py-1 rounded-full font-bold bg-amber-500/20 text-amber-300 border border-amber-500/30">Active</span>
+      </div>
+      <p id="pDesc" class="text-sm sm:text-base text-purple-200/70 leading-normal"></p>
+    </a>
+
+    <!-- Additional Links Section -->
+    <section class="mb-8">
+      <h2 id="moreTitle" class="title-serif text-lg sm:text-xl font-normal mb-4 text-purple-100"></h2>
+      <ul id="links" class="space-y-3"></ul>
+    </section>
+
+    <!-- Context Note Box -->
+    <div id="note" class="glass-card rounded-xl p-4 sm:p-5 text-sm text-purple-200/80 mb-8 leading-relaxed shadow-md border-l-2 border-l-purple-500/50"></div>
+
+    <!-- Email Identification Form -->
+    <section class="mb-10 glass-card rounded-2xl p-5 sm:p-6 shadow-md">
+      <p id="who" class="text-sm font-semibold text-purple-200/80 mb-3"></p>
+      
+      <div id="nameBox" class="space-y-3" hidden>
+        <label for="emailIn" class="block text-xs uppercase tracking-wider font-bold text-amber-400/90">Your email address</label>
+        <div class="flex flex-col sm:flex-row gap-2.5">
+          <input id="emailIn" type="email" placeholder="you@example.com" autocomplete="email" class="flex-1 bg-purple-950/40 border border-purple-500/30 text-white rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:border-amber-400 focus:ring-1 focus:ring-amber-400 placeholder:text-purple-300/30">
+          <button id="nameGo" type="button" class="bg-gradient-to-r from-amber-500 to-amber-600 text-slate-950 font-extrabold text-sm px-5 py-2.5 rounded-xl hover:brightness-110 active:scale-95 transition-all shadow-md shadow-amber-500/20">
+            Greet me
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Organizer Tools (Details Drawer) -->
+    <details class="group glass-card rounded-2xl p-5 sm:p-6 shadow-md transition-all">
+      <summary class="cursor-pointer text-sm font-bold text-purple-200/90 flex items-center justify-between list-none select-none">
+        <span class="flex items-center gap-2">
+          <span>🛠️</span>
+          <span>For organizers: Generate personal onboarding links</span>
+        </span>
+        <span class="text-xs transition-transform group-open:rotate-180 text-amber-400">▼</span>
+      </summary>
+
+      <div class="mt-5 pt-4 border-t border-purple-500/20 space-y-4">
+        <p class="text-xs sm:text-sm text-purple-200/70 leading-relaxed">
+          Paste member emails (one per line or comma separated). Each user gets a customized link that greets them by name.
+        </p>
+
+        <div>
+          <label for="bulk" class="block text-xs uppercase tracking-wider font-bold text-amber-400/90 mb-1">Emails list</label>
+          <textarea id="bulk" rows="3" placeholder="sun.rahman@gmail.com&#10;nadia123@gmail.com" class="w-full bg-purple-950/40 border border-purple-500/30 text-white rounded-xl p-3 text-sm focus:outline-none focus:border-amber-400 resize-y placeholder:text-purple-300/30"></textarea>
+        </div>
+
+        <div class="flex flex-wrap gap-2">
+          <button id="bulkGo" type="button" class="bg-gradient-to-r from-amber-500 to-amber-600 hover:brightness-110 text-slate-950 font-extrabold text-sm px-4 py-2 rounded-xl active:scale-95 transition-all shadow-md shadow-amber-500/20">
+            Generate Links
+          </button>
+          <button id="copyAll" type="button" hidden class="glass-card hover:border-amber-500/50 text-amber-300 font-bold text-sm px-4 py-2 rounded-xl active:scale-95 transition-all">
+            📋 Copy All
+          </button>
+          <button id="exportCsv" type="button" hidden class="glass-card hover:border-cyan-500/50 text-cyan-300 font-bold text-sm px-4 py-2 rounded-xl active:scale-95 transition-all">
+            📊 Export CSV
+          </button>
+        </div>
+
+        <!-- Filter Search inside links output -->
+        <div id="filterWrapper" class="hidden pt-2">
+          <input id="filterIn" type="text" placeholder="Filter generated links by name or email..." class="w-full bg-purple-950/40 border border-purple-500/30 text-white rounded-lg px-3 py-1.5 text-xs focus:outline-none focus:border-amber-400">
+        </div>
+
+        <p id="msg" role="status" class="text-xs font-semibold text-amber-400 min-h-[1.2rem]"></p>
+
+        <!-- Output container -->
+        <div id="out" class="space-y-2 max-h-60 overflow-y-auto pr-1"></div>
+      </div>
+    </details>
+
+  </main>
+
+  <!-- Config Settings Modal -->
+  <dialog id="configModal" class="p-0 rounded-2xl max-w-lg w-[90%] bg-transparent backdrop:backdrop-blur-md">
+    <div class="glass-card p-6 rounded-2xl shadow-2xl border border-purple-500/40 text-white">
+      <div class="flex justify-between items-center mb-4">
+        <h3 class="title-serif text-lg font-bold text-amber-300">Customize Page Configuration</h3>
+        <button id="closeConfigBtn" class="text-lg px-2 text-purple-300 hover:text-white">✕</button>
+      </div>
+      
+      <p class="text-xs text-purple-200/70 mb-4">
+        Modify the JSON payload below to adjust titles, text, and link targets directly in the live view.
+      </p>
+
+      <textarea id="configJsonIn" rows="10" class="w-full font-mono text-xs p-3 rounded-xl bg-slate-950/90 text-emerald-400 border border-purple-500/30 focus:outline-none focus:border-amber-400 mb-4"></textarea>
+
+      <div class="flex justify-end gap-2">
+        <button id="resetConfigBtn" type="button" class="px-3 py-2 text-xs font-bold rounded-xl glass-card border border-purple-500/30 hover:text-amber-300">Reset Default</button>
+        <button id="saveConfigBtn" type="button" class="px-4 py-2 text-xs font-bold rounded-xl bg-gradient-to-r from-amber-500 to-amber-600 text-slate-950 hover:brightness-110">Save & Apply</button>
+      </div>
+    </div>
+  </dialog>
+
+  <!-- Footer -->
+  <footer class="w-full text-center py-6 text-xs text-purple-300/60 border-t border-purple-500/20 mt-12">
+    BRAC University Computer Club &copy; Communication & Marketing
+  </footer>
+
+<script>
+/* ================= DEFAULT CONFIGURATION ================= */
+const DEFAULT_CONFIG = {
+  siteUrl: '', // Auto-detected if empty
+  club: 'BRAC University Computer Club · Communication & Marketing',
+  greetingWithName: 'Welcome to the team, {name}.',
+  greetingNoName:    'Welcome to the team.',
+  lead: 'Your interview went well and we are really happy to have you as a General Member. Everything you need to get started is right here.',
+  primary: {
+    title: 'Join our department group',
+    desc:  'Our messenger group is where tasks, updates and all the fun happen.',
+    url:   ''  // e.g. 'https://m.me/j/xxxx'
+  },
+  moreTitle: 'More places to find us',
+  links: [
+    { emoji: '📘', title: 'BUCC Facebook page',   desc: 'Club news and event announcements', url: 'https://facebook.com/BUCC.BRACU' },
+    { emoji: '💬', title: 'BUCC main community',  desc: 'Where the whole club hangs out',    url: '' },
+    { emoji: '🗓️', title: 'Upcoming events',       desc: 'See what is coming up next',         url: '' }
+  ],
+  note: 'Please join the group within a few days so we can add you to your first task. If a link does not open, reply to your joining mail and we will help.'
+};
+
+let CONFIG = JSON.parse(localStorage.getItem('bucc-cm-config')) || DEFAULT_CONFIG;
+
+const $ = id => document.getElementById(id);
+const SOON = 'Link coming soon';
+
+/* ================= THEME SYSTEM ================= */
+function initTheme() {
+  const saved = localStorage.getItem('bucc-theme');
+  const themeIcon = $('themeIcon');
+  
+  if (saved === 'light') {
+    document.documentElement.classList.remove('dark');
+    if (themeIcon) themeIcon.textContent = '🌙';
+  } else {
+    document.documentElement.classList.add('dark');
+    if (themeIcon) themeIcon.textContent = '☀️';
+  }
+}
+
+const themeToggleBtn = $('themeToggleBtn');
+if (themeToggleBtn) {
+  themeToggleBtn.onclick = () => {
+    const isDark = document.documentElement.classList.toggle('dark');
+    localStorage.setItem('bucc-theme', isDark ? 'dark' : 'light');
+    const themeIcon = $('themeIcon');
+    if (themeIcon) themeIcon.textContent = isDark ? '☀️' : '🌙';
+  };
+}
+
+/* ================= UTILITIES ================= */
+function firstName(input) {
+  if (!input) return '';
+  let s = String(input).trim();
+  if (!s) return '';
+  if (s.includes('@')) s = s.split('@')[0];
+  const tok = s.split(/[._\-+\s0-9]+/).filter(Boolean)[0] || '';
+  return tok ? tok.charAt(0).toUpperCase() + tok.slice(1).toLowerCase() : '';
+}
+
+function remember(n) { try { localStorage.setItem('bucc-cm-name', n); } catch (e) {} }
+function recall() { try { return localStorage.getItem('bucc-cm-name') || ''; } catch (e) { return ''; } }
+
+/* ================= UI RENDERING ================= */
+function render(name) {
+  $('greeting').textContent = name ? CONFIG.greetingWithName.replace('{name}', name) : CONFIG.greetingNoName;
+  $('who').textContent = name ? 'Not ' + name + '? ' : '';
+  
+  if (name) {
+    const b = document.createElement('button');
+    b.type = 'button';
+    b.className = 'underline hover:text-amber-500 transition-colors ml-1';
+    b.textContent = 'Use a different email';
+    b.onclick = () => { $('nameBox').hidden = false; $('emailIn').focus(); };
+    $('who').appendChild(b);
+    $('nameBox').hidden = true;
+  } else {
+    $('who').textContent = 'Enter your email address and we will greet you by name.';
+    $('nameBox').hidden = false;
+  }
+  
+  document.title = name ? 'Welcome, ' + name + ' · BUCC C&M' : 'Welcome to BUCC Communication & Marketing';
+}
+
+function build() {
+  $('club').textContent = CONFIG.club;
+  $('lead').textContent = CONFIG.lead;
+  $('note').textContent = CONFIG.note;
+  $('moreTitle').textContent = CONFIG.moreTitle;
+
+  // Primary Action Card
+  const p = CONFIG.primary;
+  $('pTitle').textContent = p.title;
+  
+  if (p.url) {
+    $('pDesc').textContent = p.desc;
+    $('primary').href = p.url;
+    $('primary').style.opacity = '1';
+    $('primary').style.pointerEvents = 'auto';
+    $('pBadge').textContent = 'Active';
+    $('pBadge').className = 'text-xs px-2.5 py-1 rounded-full font-bold bg-emerald-500/20 text-emerald-300 border border-emerald-500/30';
+  } else {
+    $('pDesc').textContent = p.desc + ' (' + SOON.toLowerCase() + ')';
+    $('primary').removeAttribute('href');
+    $('primary').style.opacity = '.75';
+    $('pBadge').textContent = 'Soon';
+    $('pBadge').className = 'text-xs px-2.5 py-1 rounded-full font-bold bg-amber-500/20 text-amber-300 border border-amber-500/30';
+  }
+
+  // Links List
+  const ul = $('links');
+  ul.innerHTML = '';
+  CONFIG.links.forEach(l => {
+    const li = document.createElement('li');
+    const hasUrl = Boolean(l.url);
+    const el = document.createElement(hasUrl ? 'a' : 'div');
+    
+    el.className = `glass-card glass-card-hover rounded-xl p-4 flex items-center justify-between gap-3 transition-all ${
+      hasUrl ? 'cursor-pointer' : 'opacity-65'
+    }`;
+
+    if (hasUrl) {
+      el.href = l.url;
+      el.target = '_blank';
+      el.rel = 'noopener';
+    }
+
+    el.innerHTML = `
+      <div class="flex items-center gap-3">
+        <span class="text-xl">${l.emoji}</span>
+        <div>
+          <b class="block text-sm font-bold text-white">${l.title}</b>
+          <span class="text-xs text-purple-200/70">${hasUrl ? l.desc : l.desc + ' (' + SOON.toLowerCase() + ')'}</span>
+        </div>
+      </div>
+      <span class="text-xs font-semibold px-2.5 py-1 rounded-md ${
+        hasUrl ? 'bg-cyan-500/20 text-cyan-300 border border-cyan-500/30' : 'bg-slate-500/20 text-slate-400 border border-slate-500/30'
+      }">${hasUrl ? 'Open ↗' : 'Soon'}</span>
+    `;
+
+    li.appendChild(el);
+    ul.appendChild(li);
+  });
+}
+
+function updateNameFromLocation() {
+  const h = decodeURIComponent((location.hash || '').replace('#', ''));
+  let name = firstName(h) || recall();
+  if (name) remember(name);
+  render(name);
+}
+
+/* ================= EVENT HANDLERS ================= */
+$('nameGo').onclick = () => {
+  const n = firstName($('emailIn').value);
+  if (!n) { $('emailIn').focus(); return; }
+  remember(n);
+  render(n);
+};
+
+$('emailIn').addEventListener('keydown', e => {
+  if (e.key === 'Enter') $('nameGo').click();
+});
+
+// Hashchange Listener for dynamic routing without reload
+window.addEventListener('hashchange', updateNameFromLocation);
+
+/* ================= ORGANIZER BULK TOOLS ================= */
+let generatedData = [];
+
+$('bulkGo').onclick = () => {
+  const base = CONFIG.siteUrl || (window.location.origin + window.location.pathname);
+  const rawInput = $('bulk').value;
+  const emails = rawInput.split(/[\s,;]+/).filter(x => x.includes('@'));
+  const out = $('out');
+  out.innerHTML = '';
+  generatedData = [];
+
+  if (!emails.length) {
+    $('msg').textContent = 'Please add at least one valid email address.';
+    $('copyAll').hidden = true;
+    $('exportCsv').hidden = true;
+    $('filterWrapper').classList.add('hidden');
+    return;
+  }
+
+  emails.forEach(em => {
+    const name = firstName(em);
+    const link = base + '#' + name;
+    generatedData.push({ name, email: em, link });
+  });
+
+  renderGeneratedItems(generatedData);
+
+  $('copyAll').hidden = false;
+  $('exportCsv').hidden = false;
+  $('filterWrapper').classList.remove('hidden');
+  $('msg').textContent = `${generatedData.length} link${generatedData.length > 1 ? 's' : ''} generated successfully!`;
+};
+
+function renderGeneratedItems(items) {
+  const out = $('out');
+  out.innerHTML = '';
+
+  items.forEach(item => {
+    const d = document.createElement('div');
+    d.className = 'glass-card rounded-xl p-3 flex items-center justify-between gap-2 text-xs border border-purple-500/30';
+    d.innerHTML = `
+      <div class="truncate flex-1">
+        <b class="text-white">${item.name}</b>
+        <span class="text-purple-300/70 ml-1">(${item.email})</span>
+      </div>
+      <div class="flex items-center gap-1">
+        <button type="button" class="preview-btn px-2.5 py-1 rounded bg-purple-500/20 hover:bg-purple-500/30 text-purple-200 font-semibold transition-all">Preview</button>
+        <button type="button" class="copy-btn px-2.5 py-1 rounded bg-amber-500 text-slate-950 font-extrabold hover:bg-amber-400 transition-all">Copy</button>
+      </div>
+    `;
+
+    d.querySelector('.copy-btn').onclick = () => copyText(item.link, `Link for ${item.name} copied!`);
+    d.querySelector('.preview-btn').onclick = () => {
+      window.location.hash = item.name;
+    };
+
+    out.appendChild(d);
+  });
+}
+
+// Search Filter
+$('filterIn').oninput = (e) => {
+  const query = e.target.value.toLowerCase();
+  const filtered = generatedData.filter(d => 
+    d.name.toLowerCase().includes(query) || d.email.toLowerCase().includes(query)
+  );
+  renderGeneratedItems(filtered);
+};
+
+// Copy All
+$('copyAll').onclick = () => {
+  const text = generatedData.map(d => `${d.email}\t${d.link}`).join('\n');
+  copyText(text, 'All links copied to clipboard (Email, then Link).');
+};
+
+// Export CSV
+$('exportCsv').onclick = () => {
+  let csvContent = "data:text/csv;charset=utf-8,Name,Email,Personal Link\n";
+  generatedData.forEach(d => {
+    csvContent += `"${d.name}","${d.email}","${d.link}"\n`;
+  });
+  const encodedUri = encodeURI(csvContent);
+  const link = document.createElement("a");
+  link.setAttribute("href", encodedUri);
+  link.setAttribute("download", "BUCC_Personal_Links.csv");
+  document.body.appendChild(link);
+  link.click();
+  link.remove();
+};
+
+function copyText(text, successMsg) {
+  const done = () => { $('msg').textContent = successMsg; };
+  if (navigator.clipboard && navigator.clipboard.writeText) {
+    navigator.clipboard.writeText(text).then(done, fallbackCopy);
+  } else {
+    fallbackCopy();
+  }
+
+  function fallbackCopy() {
+    const t = document.createElement('textarea');
+    t.value = text;
+    document.body.appendChild(t);
+    t.select();
+    try {
+      document.execCommand('copy');
+      done();
+    } catch (e) {
+      $('msg').textContent = 'Copy failed. Please copy manually.';
+    }
+    t.remove();
+  }
+}
+
+/* ================= CONFIG MODAL HANDLERS ================= */
+$('openConfigBtn').onclick = () => {
+  $('configJsonIn').value = JSON.stringify(CONFIG, null, 2);
+  $('configModal').showModal();
+};
+
+$('closeConfigBtn').onclick = () => $('configModal').close();
+
+$('saveConfigBtn').onclick = () => {
+  try {
+    const parsed = JSON.parse($('configJsonIn').value);
+    CONFIG = parsed;
+    localStorage.setItem('bucc-cm-config', JSON.stringify(CONFIG));
+    build();
+    updateNameFromLocation();
+    $('configModal').close();
+  } catch (e) {
+    alert('Invalid JSON formatting. Please check your syntax.');
+  }
+};
+
+$('resetConfigBtn').onclick = () => {
+  CONFIG = { ...DEFAULT_CONFIG };
+  localStorage.removeItem('bucc-cm-config');
+  $('configJsonIn').value = JSON.stringify(CONFIG, null, 2);
+  build();
+  updateNameFromLocation();
+};
+
+/* ================= INITIALIZATION ================= */
+initTheme();
+build();
+updateNameFromLocation();
+</script>
+</body>
+</html>
